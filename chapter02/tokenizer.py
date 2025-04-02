@@ -1,6 +1,8 @@
 import nltk
 from nltk import word_tokenize
-nltk.download('punkt_tab')
+
+nltk.download("punkt_tab")
+
 
 def tokenize(input):
     word_list = []
