@@ -12,6 +12,14 @@ def tokenize(input: str) -> list[str]:
     return word_tokenize(input)
 
 
+def get_features(text: str) -> dict:
+    features = {}
+    word_list = word_tokenize(text.lower())
+    for word in word_list:
+        features[word] = True
+    return features
+
+
 def read_text_files(directory: str) -> list[str]:
     files = os.listdir(directory)
     text_list = []
@@ -36,6 +44,9 @@ def read_and_sort():
     random.shuffle(all_emails)
     print(f"Dataset size = {len(all_emails)} emails")
 
+    all_features = [(get_features(email), label) for (email, label) in all_emails]
+    print(get_features("Participate in lottery now!"))
+    print(all_features[0])
 
 if __name__ == "__main__":
     read_and_sort()
